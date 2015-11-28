@@ -124,6 +124,7 @@ class MediaStreamInfo(object):
         self.sub_forced = None
         self.sub_default = None
         self.metadata = {}
+        self.profile = None
 
     @staticmethod
     def parse_float(val, default=0.0):
@@ -166,6 +167,8 @@ class MediaStreamInfo(object):
             self.audio_samplerate = self.parse_float(val)
         elif key == 'DISPOSITION:attached_pic':
             self.attached_pic = self.parse_int(val)
+        elif key == 'profile':
+            self.profile = val
 
         if key.startswith('TAG:'):
             key = key.split('TAG:')[1]
